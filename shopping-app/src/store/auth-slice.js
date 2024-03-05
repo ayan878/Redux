@@ -15,7 +15,10 @@ const authSlice = createSlice({
   },
 });
 
+// Option 1: Exporting action creators as a named export
 // export const authActions = authSlice.actions;
-// or
-export const { login, logout } = authSlice.actions; // Destructuring action creators
+
+// Option 2: Destructuring action creators and exporting them individually
+export const { login, logout } = authSlice.actions;
+
 export default authSlice.reducer; // Exporting reducer as default
