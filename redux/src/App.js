@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { actions } from "./store";
+// import { actions } from "./store";
+import { actions } from "./store/store";
 import "./App.css";
 
 function App() {
