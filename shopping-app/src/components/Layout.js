@@ -4,9 +4,11 @@ import Products from "./Products";
 import CartItems from "./CartItems";
 import "./Layout.css";
 import { useSelector } from "react-redux";
-const Layout = () => {
-  const { itemsList } = useSelector((state) => state.cart);
 
+const Layout = () => {
+
+  const { itemsList } = useSelector((state) => state.cart);
+  
   // Calculate totalPrice based on itemsList
   const totalPrice = itemsList.reduce(
     (total, item) => total + item.totalPrice,
