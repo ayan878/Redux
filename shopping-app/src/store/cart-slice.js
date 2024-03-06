@@ -25,17 +25,33 @@ const cartSlice = createSlice({
           name: newItem.name,
         });
       }
-      state.totalQuantity++; 
+      state.totalQuantity++;
     },
     removeToCart(state, action) {
-      // You need to implement logic for removing item from cart
+      const idToRemove = action.payload;
+      const existingItem = state.itemsList.find(
+        (item) => item.id === idToRemove
+      );
+      if (existingItem) {
+        if (existingItem.quantity === 1) {
+          // If quantity is already 1, remove the item from the list
+          state.itemsList = state.itemsList.filter(
+            (item) => item.id !== idToRemove
+          );
+        } else {
+          // Decrease the quantity by 1
+          existingItem.quantity--;
+          // Decrease the total quantity by 1
+        }
+        state.totalQuantity--;
+      }
     },
+
     setShowCart(state) {
       state.showCart = !state.showCart;
     },
   },
 });
 
-// Destructuring action creators
 export const { addToCart, removeToCart, setShowCart } = cartSlice.actions;
 export default cartSlice.reducer;
